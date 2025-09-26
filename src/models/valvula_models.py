@@ -9,8 +9,8 @@ class Valvulas(db.Model):
     local_valvula = db.Column(db.String(120), nullable=True)
 
 
-    def __init__(self, nome, email, data_login, senha):
-        self.__nome = nome #esat vindo da view
-        self.__email = email
-        self.__data_login = data_login
-        self.__senha = senha
+    def __init__(self, nome_valvula, local_valvula):
+        self.__nome_valvula = nome_valvula 
+        self.__local_valvula = local_valvula
+       
+        
