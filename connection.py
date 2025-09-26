@@ -5,9 +5,14 @@ import os
 
 load_dotenv()
 
-
-SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
 SECRET_KEY = os.getenv("SECRET_KEY")
+DATABASE = os.getenv("DATABASE")
+PORT = os.getenv("PORT")
+PASSWORD = os.getenv("PASSWORD")
+HOST = os.getenv("HOST") 
+USER = os.getenv("USER") 
+SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 #teste de conexão
 
