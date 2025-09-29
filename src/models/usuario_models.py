@@ -1,5 +1,5 @@
 from src import db
-from passlib.hash import pbkdf2_sha256 as sha256
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 class Usuario(db.Model, UserMixin):
@@ -9,48 +9,14 @@ class Usuario(db.Model, UserMixin):
     nome = db.Column(db.String(120), nullable=False)                 
     email = db.Column(db.String(120), nullable=False, unique=True)  
     senha = db.Column(db.String(255), nullable=False)                
-    data_login = db.Column(db.Datetime, nullable=False) 
-
-    def __init__(self, nome, email, senha):
-        self.__nome = nome 
-        self.__email = email
-        self.__senha = senha
-
-    # get e set para manipular os atributos encapsulados
-
-    @property
-    def nome(self):
-        return self.__nome
-    
-    @nome.setter
-    def nome(self, nome):
-        self.nome = nome
-        
-    @property
-    def email(self):
-        return self.__email
-    
-    @email.setter
-    def email(self, email):
-        self.email = email
-    
-        
-    @property
-    def senha(self):
-        return self.__senha
-    
-    @senha.setter
-    def senha(self, senha):
-        self.senha = senha
-    
 
     # Gera o hash da senha e armazena no campo 'senha'
     def gen_senha(self, senha):
-        self.senha = sha256.hash(senha)
+        self.senha = generate_password_hash(senha)
 
     # Verifica se a senha informada corresponde ao hash armazenado
     def verificar_senha(self, senha):
-        return sha256.verify(senha, self.senha)
+        return check_password_hash(self.senha, senha)
     
 
 

@@ -23,5 +23,5 @@ def listr_usuario_id(id):
     
 
 def listar_usuario_email(email):
-    usuario_encontrado = Usuario.query.filter_by(email = email).first()
+    usuario_encontrado = Usuario.query.filter_by(email==email).first()
     return usuario_encontrado

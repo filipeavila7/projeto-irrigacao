@@ -4,7 +4,7 @@ class Registro(db.Model):
     __tablename__ = 'tb_registro'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
     status = db.Column(db.Boolean, nullable=False)
-    data_acionamento = db.Column(db.Datetime, nullable=False)    
+    data_acionamento = db.Column(db.DateTime, nullable=False)    
 
     # chaves estrangeiras 
     id_usuario = db.Column(db.Integer, db.ForeignKey('tb_usuario.id'), nullable=False)             
