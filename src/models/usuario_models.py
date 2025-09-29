@@ -1,7 +1,8 @@
 from src import db
 from passlib.hash import pbkdf2_sha256 as sha256
+from flask_login import UserMixin
 
-class Usuario(db.Model):
+class Usuario(db.Model, UserMixin):
     __tablename__ = 'tb_usuario'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
@@ -10,10 +11,9 @@ class Usuario(db.Model):
     senha = db.Column(db.String(255), nullable=False)                
     data_login = db.Column(db.Datetime, nullable=False) 
 
-    def __init__(self, nome, email, data_login, senha):
-        self.__nome = nome #esat vindo da view
+    def __init__(self, nome, email, senha):
+        self.__nome = nome 
         self.__email = email
-        self.__data_login = data_login
         self.__senha = senha
 
     # get e set para manipular os atributos encapsulados
@@ -43,15 +43,6 @@ class Usuario(db.Model):
     def senha(self, senha):
         self.senha = senha
     
-    
-    @property
-    def data_login(self):
-        return self.__data_login
-    
-    @data_login.setter
-    def data_login(self, data_login):
-        self.data_login = data_login
-
 
     # Gera o hash da senha e armazena no campo 'senha'
     def gen_senha(self, senha):
@@ -61,6 +52,8 @@ class Usuario(db.Model):
     def verificar_senha(self, senha):
         return sha256.verify(senha, self.senha)
     
+
+
 
 
 
