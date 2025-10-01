@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Aquanox - Controle de Irrigação Inteligente</title>
+  <link rel="stylesheet" href="static/css/styleinicial.css">
+  <script>
+    // Bloqueia zoom por teclado e gestos
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) e.preventDefault();
+    }, { passive: false });
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault();
+    });
+    document.addEventListener('gesturechange', function (e) {
+      e.preventDefault();
+    });
+    document.addEventListener('gestureend', function (e) {
+      e.preventDefault();
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <img src="static/img/logo.png" alt="Aquanox Logo" class="logo">
+      <nav>
+        <ul>
+
+          <li><a href="#sobre">SOBRE</a></li>
+          <li><a href="#funcoes">FUNÇÕES</a></li>
+          <li><a href="#faq">FAQ</a></li>
+
+        </ul>
+      </nav>
+      <img src="static/img/usuario.svg" alt="Usuário" class="user-icon"> <!-- Adiciona a imagem do usuário -->
+    </div>
+  </header>
+
+  <div class="banner-container">
+    <div class="rectangle-2"></div>
+    <img src="static/img/fundo.png" alt="Banner Aquanox" class="banner-image" fetchpriority="high">
+
+    <!-- Left text box -->
+    <div class="text-overlay left">
+      <p>IRRIGAÇÃO COM MONITORAMENTO INTELIGENTE</p>
+
+      <!-- Caixa de texto solicitada -->
+      <div class="descricao-inria">
+        <span class="inria-bold">Apresentamos um sistema inovador que automatiza o controle da irrigação, aplicando exatamente a quantidade de água que sua plantação precisa. Com suporte para desktop, web e dispositivos móveis, você acompanha e gerencia a irrigação de qualquer lugar, de forma simples e prática.</span>
+        <span class="inria-regular">
+          Nossa estação meteorológica integrada monitora o clima e a umidade do solo em tempo real, fornecendo dados essenciais para que o sistema tome decisões precisas. Isso evita desperdícios de água e energia, garantindo uma rega uniforme e eficiente.
+
+          Com válvulas aspersoras inteligentes, o sistema abre e fecha automaticamente para atender às necessidades específicas da sua plantação, promovendo mais saúde e produtividade para as culturas.
+
+          Desenvolvido com foco em inovação tecnológica, nosso projeto oferece uma solução prática e sustentável para o agricultor moderno.
+        </span>
+      </div>
+
+      <button class="btn-saiba-mais">Saiba mais
+        <img class="maki-arrow" src="static/img/maki-arrow0.svg" alt="saibaMaisSeta" />
+      </button>
+    </div>
+
+    <!-- Right login form container -->
+    <div class="login-overlay">
+      <!-- Login Form (visible by default) -->
+      <div class="login-box" id="loginForm">
+        <h2>Login</h2>
+        <form>
+          <input type="text" name="username" placeholder="Nome de Usuário" required>
+          <div class="password-container">
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="button" id="togglePassword" class="toggle-password"></button>
+          </div>
+          <div class="aux-link">
+            <a href="#" id="forgotPasswordLink">Esqueceu sua senha?</a>
+          </div>
+          <button type="submit" class="btn-entrar">Entrar</button>
+        </form>
+      </div>
+
+      <!-- Placeholder para carregar o formulário de recuperação -->
+      <div id="forgotPasswordContainer" style="display: none;"></div>
+    </div>
+  </div>
+
+  <div class="rectangle-2"></div>
+  <div class="rectangle-7">
+    <div class="sobre-aquanox">SOBRE AQUANOX</div>
+    <div class="texto-sobre-aquanox">
+      Este projeto propõe o desenvolvimento de um sistema inteligente de controle e monitoramento de irrigação, com
+      suporte multiplataforma (desktop, web e mobile). A solução realiza o manejo automático da irrigação, fornecendo a
+      quantidade exata de água necessária para a cultura, evitando o estresse hídrico das plantas e o desperdício de
+      recursos, como água e energia elétrica.
+      <br><br>
+      Além disso, o sistema permite o acesso remoto via internet, possibilitando que o agricultor acompanhe o
+      funcionamento da irrigação de qualquer lugar, por meio de um computador ou dispositivo móvel. O projeto foi
+      desenvolvido como parte de uma iniciação científica, com foco em inovação tecnológica aplicada ao campo.
+    </div>
+    <div class="saiba-mais-container">
+      <button class="btn-saiba-mais btn-saiba-mais-rectangle7">
+        Saiba mais em aquanox.contato@gmail.com
+      </button>
+    </div>
+    <div class="rectangle-8">
+      <!-- Imagem de fundo do rectangle-8 -->
+      <img src="static/img/fundo2.png" alt="Irrigação" class="img-irrigacao-rectangle8" />
+
+      <div class="funcoes-aquanox">FUNÇÕES DO AQUANOX</div>
+
+      <div class="rectangle-14">
+        <div class="rectangle-14-content">
+          <h2>Válvulas</h2>
+          <p>Nosso projeto conta com válvulas que controlam o fluxo de água para a irrigação por gotejamento, as válvulas abrem e fecham automaticamente de acordo com a umidade do solo, ou podem ser abertas e fechadas manualmente, garantindo uma rega mais eficiente, econômica e sustentável.</p>
+        </div>
+      </div>
+
+      <div class="rectangle-14-invertida">
+        <div class="rectangle-14-content-invertida">
+          <h2>Estação Metereológica</h2>
+          <p>Ela é responsável por recebe as medições do tempo e medir a umidade do solo, essas informações são de suma importância para a abertura e fechamento automático das válvulas, evitando assim desperdícios desnecessários, logo pesando menos no bolso de nosso consumidor.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rectangle-9">
+      <!-- FAQ e Dúvidas - SEMPRE centralizados -->
+      <h2 class="faq2">FAQ</h2>
+      <h3 class="d-vidas-sobre-o-projeto">Dúvidas sobre o projeto</h3>
+
+      <!-- Container do FAQ -->
+      <div class="faq-container">
+        <div class="rectangle-162">
+          <span class="rectangle-162-text">Como funciona o Aquanox?</span>
+          <img src="static/img/seta.svg" alt="Seta" class="seta" id="abrirExpansivel">
+        </div>
+
+        <div class="caixa-expansivel" id="caixaExpansivel">
+          <div class="caixa-expansivel-text">
+            O Aquanox funciona monitorando e controlando automaticamente a irrigação, utilizando sensores e algoritmos
+            inteligentes para fornecer a quantidade ideal de água para as plantas, evitando desperdícios e otimizando
+            recursos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rectangle-99">
+      <img src="static/img/aaa.png" alt="AAA" class="img-aaa">
+      <img src="static/img/logo.png" alt="Logo" class="img-logo-below-aaa">
+      <img src="static/img/fundo2.png" alt="Show" class="img-show">
+      <img src="static/img/fim.png" alt="Fim" class="img-fim">
+    </div>
+
+
+    <!-- Modal de confirmação de cadastro -->
+    <div id="cadastroConfirmModal" style="display:none;">
+      <div
+        style="background:#fff; border-radius:16px; padding:40px 32px; min-width:320px; max-width:90vw; margin:120px auto; box-shadow:0 2px 16px #0003; text-align:center;">
+        <h2 style="font-size:2rem; color:#436177; margin-bottom:16px;">Cadastro realizado com sucesso!</h2>
+        <p style="font-size:1.1rem; color:#222; margin-bottom:32px;">Seu cadastro foi concluído. Clique em "Ir para o
+          painel" para acessar o sistema.</p>
+        <button id="btnIrPainel"
+          style="background:#73A8CE; color:#fff; font-size:1.1rem; font-family:'Nexa-Heavy',sans-serif; border:none; border-radius:8px; padding:12px 32px; cursor:pointer;">Ir
+          para o painel</button>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      // Exemplo: ao clicar em "Entrar", mostra modal de confirmação e redireciona após confirmação
+      document.addEventListener('DOMContentLoaded', function () {
+        const btnEntrar = document.querySelector('.btn-entrar');
+        if (btnEntrar) {
+          btnEntrar.addEventListener('click', function (e) {
+            e.preventDefault();
+            const username = document.querySelector('input[name="username"]').value.trim();
+            const password = document.querySelector('input[name="password"]').value.trim();
+            if (!username || !password) {
+              alert('Por favor, preencha todos os campos!');
+              return;
+            }
+            // Mostra modal de confirmação
+            document.getElementById('cadastroConfirmModal').style.display = 'flex';
+            document.getElementById('btnIrPainel').onclick = function () {
+              window.location.href = '/painel_admin';
+            };
+          });
+        }
+      });
+    </script>
+</body>
+
+</html>

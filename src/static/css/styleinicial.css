@@ -1,0 +1,1357 @@
+/* ===== FAQ COM ANIM/* ===== RESET E ESTILOS GERAIS ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #73a8ce;
+  background-image: url("img/fundo.png");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* ===== IMPORTAÇÃO DE FONTES ===== */
+@import url("https://fonts.googleapis.com/css?family=Inria+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Inria Sans Bold Local";
+  src: url("/static/fonts/inria-sans.bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inria Sans Light Local";
+  src: url("/static/fonts/inria-sans.light.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inria Sans Regular Local";
+  src: url("/static/fonts/inria-sans.regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karantina-Regular";
+  src: url("/static/fonts/Karantina-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karantina-Bold";
+  src: url("/static/fonts/Karantina-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa-Heavy";
+  src: url("/static/fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== HEADER RESPONSIVO COM ANIMAÇÕES ===== */
+header {
+  background-color: #402f26;
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: clamp(30px, 6vw, 80px);
+  width: min(95%, 1200px);
+  margin: 0 auto;
+  position: fixed;
+  top: clamp(10px, 3vw, 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+header.scrolled {
+  padding: 0.5rem 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  top: 10px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: clamp(35px, 5vw, 50px);
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* ===== MENU HAMBÚRGUER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* ===== NAVEGAÇÃO RESPONSIVA ===== */
+nav {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: clamp(20px, 3vw, 40px);
+  font-family: "Karantina-Regular";
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+nav ul li a:hover::before {
+  width: 80%;
+}
+
+nav ul li a:hover {
+  color: #73a8ce;
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-icon {
+  height: clamp(35px, 5vw, 50px);
+  width: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.user-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* ===== BANNER E CONTEÚDO PRINCIPAL ===== */
+.rectangle-2 {
+  background: linear-gradient(
+    0deg,
+    rgba(115, 168, 206, 1) 0%,
+    rgba(217, 217, 217, 0) 100%
+  );
+  width: 100%;
+  min-height: clamp(800px, 100vh, 1200px);
+  position: relative;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  min-height: clamp(800px, 100vh, 1200px);
+  margin-top: clamp(80px, 12vw, 140px);
+  padding: 0;
+}
+
+.banner-image {
+  width: 100%;
+  min-height: clamp(800px, 100vh, 1200px);
+  height: 130%;
+  object-fit: cover;
+  position: absolute;
+  top: -140px;
+  left: 0;
+  z-index: 1;
+}
+
+/* ===== TEXT OVERLAY COM ANIMAÇÕES ===== */
+.text-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 24px);
+  position: absolute;
+  left: clamp(20px, 8vw, 320px);
+  top: clamp(180px, 22vw, 300px);
+  width: min(90%, 682px);
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-overlay p {
+  color: #413027;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: clamp(40px, 8vw, 100px);
+  line-height: 1;
+  margin-bottom: clamp(10px, 2vw, 20px);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.descricao-inria {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 665px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.inria-bold {
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2.5vw, 24px);
+  color: #413027;
+  display: block;
+}
+
+.inria-regular {
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-weight: normal;
+  font-size: clamp(14px, 2vw, 24px);
+  color: #413027;
+  display: block;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* ===== BOTÕES COM ANIMAÇÕES SUAVES ===== */
+.btn-saiba-mais {
+  background: #413027;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: clamp(24px, 4vw, 40px);
+  color: white;
+  border-radius: clamp(40px, 8vw, 80px);
+  border: 1.5px solid #ffffff;
+  padding: clamp(8px, 1.5vw, 12px) clamp(20px, 4vw, 32px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  white-space: nowrap;
+}
+
+.btn-saiba-mais:hover,
+.btn-saiba-mais:focus {
+  background: white;
+  color: #413027;
+  border-color: #413027;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn-saiba-mais:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.maki-arrow {
+  border-radius: 50%;
+  width: clamp(18px, 3vw, 23px);
+  height: clamp(18px, 3vw, 23px);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-saiba-mais:hover .maki-arrow,
+.btn-saiba-mais:focus .maki-arrow {
+  background: #413027;
+  transform: translateX(4px);
+}
+
+.maki-arrow svg {
+  width: clamp(16px, 2.5vw, 22px);
+  height: clamp(16px, 2.5vw, 22px);
+  fill: #413027;
+  transition: fill 0.3s ease;
+}
+
+.btn-saiba-mais:hover .maki-arrow svg,
+.btn-saiba-mais:focus .maki-arrow svg {
+  fill: #fff;
+}
+
+/* ===== LOGIN BOX RESPONSIVO ===== */
+.login-overlay {
+  position: absolute;
+  right: clamp(20px, 5vw, 13%);
+  top: clamp(180px, 22vw, 300px);
+  z-index: 50;
+  animation: fadeInRight 0.8s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.login-box,
+#loginForm {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: clamp(20px, 4vw, 40px);
+  border: 1.5px solid #ffffff;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: clamp(24px, 4vw, 32px);
+  width: min(90vw, 420px);
+  box-shadow: 
+    inset -33px 33px 33px 0px rgba(255, 255, 255, 0.1),
+    inset 33px -33px 33px 0px rgba(165, 165, 165, 0.1),
+    -4px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-box:hover,
+#loginForm:hover {
+  box-shadow: 
+    inset -33px 33px 33px 0px rgba(255, 255, 255, 0.15),
+    inset 33px -33px 33px 0px rgba(165, 165, 165, 0.15),
+    -4px 12px 30px 0px rgba(0, 0, 0, 0.25);
+}
+
+.login-box h2 {
+  font-size: clamp(32px, 6vw, 48px);
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.login-box h3 {
+  font-size: clamp(12px, 2vw, 15px);
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  color: black;
+  opacity: 0.5;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-box input {
+  width: 100%;
+  padding: clamp(10px, 2vw, 12px);
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: clamp(14px, 2vw, 16px);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #413027;
+  box-shadow: 0 0 0 3px rgba(65, 48, 39, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-entrar {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: #fff;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: bold;
+  padding: clamp(12px, 2vw, 15px);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.btn-entrar:hover,
+.btn-entrar:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  background: linear-gradient(90deg, #45a049, #72b96d);
+}
+
+.btn-entrar:active {
+  transform: translateY(0);
+}
+
+/* ===== PASSWORD TOGGLE ===== */
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+  word-break: break-all;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.toggle-password:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.aux-link {
+  text-align: right;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.aux-link a {
+  color: black;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: clamp(12px, 2vw, 14px);
+  transition: all 0.3s ease;
+}
+
+.aux-link a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ===== SEÇÕES RESPONSIVAS COM ANIMAÇÕES ===== */
+.rectangle-7,
+.rectangle-8,
+.rectangle-9 {
+  width: 100%;
+  padding: clamp(40px, 8vw, 100px) clamp(20px, 5vw, 80px);
+  position: relative;
+  min-height: 400px;
+  transition: all 0.3s ease;
+}
+
+.rectangle-7 {
+  background: #413027;
+  margin-top: 0;
+}
+
+.rectangle-8 {
+  background: #73a8ce;
+  overflow: hidden;
+  position: relative;
+}
+
+.rectangle-9 {
+  background: #413027;
+  position: relative;
+}
+
+/* Imagem de fundo do rectangle-8 */
+.img-irrigacao-rectangle8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Garante que o conteúdo do rectangle-8 fique acima da imagem */
+.rectangle-8 > *:not(.img-irrigacao-rectangle8) {
+  position: relative;
+  z-index: 1;
+}
+
+.sobre-aquanox,
+.funcoes-aquanox {
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: clamp(30px, 5vw, 60px);
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.texto-sobre-aquanox {
+  color: #fff;
+  font-size: clamp(14px, 2vw, 20px);
+  font-family: "Inria Sans Light Local", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto clamp(30px, 5vw, 60px);
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== CARDS DE FUNÇÃO COM ANIMAÇÕES ===== */
+.rectangle-14,
+.rectangle-14-invertida {
+  background: linear-gradient(135deg, #2ecc71 0%, #1f5b2c 100%);
+  border-radius: clamp(20px, 4vw, 50px);
+  padding: clamp(24px, 4vw, 40px);
+  margin: clamp(20px, 4vw, 40px) auto;
+  max-width: min(90%, 690px);
+  min-height: 200px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.rectangle-14::before,
+.rectangle-14-invertida::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(315deg, rgba(46, 204, 113, 0.3) 0%, rgba(31, 91, 44, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.rectangle-14:hover,
+.rectangle-14-invertida:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+}
+
+.rectangle-14:hover::before,
+.rectangle-14-invertida:hover::before {
+  opacity: 1;
+}
+
+.rectangle-14-content,
+.rectangle-14-content-invertida {
+  position: relative;
+  z-index: 1;
+}
+
+.rectangle-14-content h2,
+.rectangle-14-content-invertida h2 {
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.rectangle-14:hover h2,
+.rectangle-14-invertida:hover h2 {
+  transform: translateY(-4px);
+}
+
+.rectangle-14-content p,
+.rectangle-14-content-invertida p {
+  font-family: "Inria Sans Regular Local", sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  color: #fff;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== FAQ COM ANIMAÇÕES ===== */
+.faq2 {
+  font-family: "Karantina-Bold", sans-serif;
+  font-size: clamp(48px, 8vw, 89px);
+  color: #ffffff;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto clamp(10px, 2vw, 20px);
+}
+
+.d-vidas-sobre-o-projeto {
+  font-family: "Inria Sans Bold Local", sans-serif;
+  font-size: clamp(20px, 4vw, 36px);
+  color: #ffffff;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto clamp(30px, 5vw, 60px);
+}
+
+/* Container do FAQ para posicionamento relativo */
+.faq-container {
+  position: relative;
+  width: min(95%, 1280px);
+  margin: 0 auto clamp(40px, 5vw, 80px);
+}
+
+.rectangle-162 {
+  background: #2b201b;
+  border-radius: 18px;
+  width: 100%;
+  padding: clamp(16px, 3vw, 24px) clamp(24px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.rectangle-162.expanded {
+  border-radius: 18px 18px 0 0;
+}
+
+.rectangle-162:hover {
+  background: #3a2d26;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.rectangle-162-text {
+  color: #fff;
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-size: clamp(18px, 3vw, 32px);
+  font-weight: bold;
+  flex: 1;
+}
+
+.seta {
+  height: clamp(20px, 3vw, 30px);
+  width: auto;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.seta.girada {
+  transform: rotate(180deg);
+}
+
+.caixa-expansivel {
+  background: #6d4c37;
+  border-radius: 0 0 18px 18px;
+  width: 100%;
+  padding: 0 clamp(24px, 4vw, 48px);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+.caixa-expansivel.show {
+  opacity: 1;
+  max-height: 600px;
+  padding: clamp(20px, 3vw, 32px) clamp(24px, 4vw, 48px);
+}
+
+.caixa-expansivel-text {
+  color: #fff;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-size: clamp(16px, 2.5vw, 26px);
+  line-height: 1.6;
+}
+
+/* ===== SAIBA MAIS CONTAINER ===== */
+.saiba-mais-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: clamp(30px, 5vw, 60px);
+}
+
+.btn-saiba-mais-rectangle7 {
+  background: #73a8ce;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: clamp(20px, 3vw, 40px);
+  color: #000;
+  border-radius: clamp(40px, 6vw, 80px);
+  border: 1.5px solid #ffffff;
+  padding: clamp(8px, 1.5vw, 12px) clamp(24px, 4vw, 48px);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  max-width: 90%;
+}
+
+.btn-saiba-mais-rectangle7:hover {
+  background: #000;
+  color: #73a8ce;
+  border-color: #73a8ce;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== IMAGENS E ELEMENTOS FINAIS ===== */
+.img-show {
+  background: #73a8ce;
+  width: 100%;
+  min-height: 700px;
+  position: relative;
+  padding: clamp(20px, 25px, 40px) clamp(5px, 5px, 100px);
+  z-index: 1;
+  display:grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-aaa {
+  max-width: min(90%, 1281px);
+  height: auto;
+  border-radius: clamp(20px, 4vw, 50px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.img-aaa:hover {
+  transform: scale(1.02);
+}
+
+.img-logo-below-aaa {
+  display: block;
+  margin: clamp(20px, 4vw, 40px) auto;
+  width: clamp(100px, 15vw, 151px);
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.img-fim {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.fim-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 12px);
+  padding: 20px;
+  align-items: center;
+  z-index: 10;
+  width: auto;
+}
+
+.fim-link {
+  color: #fff;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  text-decoration: none;
+  padding: clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  white-space: nowrap;
+}
+
+.fim-link:hover {
+  color: #73a8ce;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateX(4px);
+}
+
+/* Container para a seção final com imagem de fundo */
+.section-final {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+}
+
+.img-irrigacao-rectangle8,
+.img-logo-below-aaa {
+  transition: transform 0.3s ease;
+}
+
+/* ===== MODAL DE CONFIRMAÇÃO ===== */
+#cadastroConfirmModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+#cadastroConfirmModal > div {
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 40px);
+  min-width: min(90vw, 320px);
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s ease-out;
+  text-align: center;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#btnIrPainel {
+  background: #73A8CE;
+  color: #fff;
+  font-size: clamp(16px, 2vw, 18px);
+  font-family: 'Nexa-Heavy', sans-serif;
+  border: none;
+  border-radius: 10px;
+  padding: clamp(10px, 2vw, 12px) clamp(24px, 4vw, 32px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(115, 168, 206, 0.3);
+}
+
+#btnIrPainel:hover {
+  background: #5a8cae;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(115, 168, 206, 0.4);
+}
+
+/* ===== MEDIA QUERIES MOBILE ===== */
+
+/* Breakpoint específico para 1206px ou menor */
+@media (max-width: 1206px) {
+  .banner-container {
+    min-height: clamp(1000px, 130vh, 1500px);
+  }
+  
+  .rectangle-2 {
+    min-height: clamp(1000px, 130vh, 1500px);
+  }
+  
+  .banner-image {
+    min-height: clamp(1000px, 130vh, 1500px);
+  }
+  
+  /* Centraliza o text-overlay horizontalmente */
+  .text-overlay {
+    position: absolute;
+    margin-left: 20%;
+    transform: translateX(-50%);
+    top: clamp(140px, 18vw, 220px);
+    width: min(90%, 600px);
+    text-align: center;
+    align-items: center;
+  }
+  
+  .text-overlay p {
+    text-align: center;
+  }
+  
+  .descricao-inria {
+    text-align: center;
+  }
+  
+  /* Login-box abaixo do text-overlay, centralizado */
+  .login-overlay {
+    position: absolute;
+    right: 25%;
+    transform: translateX(-50%);
+    top: 70%;
+    bottom: clamp(60px, 10vw, 120px);
+    animation: fadeIn 0.6s ease-out;
+    text-align: center;
+    align-items: center;
+  }
+  
+  /* Centraliza FAQ */
+  .faq2,
+  .d-vidas-sobre-o-projeto {
+    text-align: center;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .faq-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .banner-container {
+    min-height: clamp(1050px, 135vh, 1600px);
+  }
+  
+  .rectangle-2 {
+    min-height: clamp(1050px, 135vh, 1600px);
+  }
+  
+  .banner-image {
+    min-height: clamp(1050px, 135vh, 1600px);
+  }
+  
+  .text-overlay {
+    top: clamp(130px, 16vw, 200px);
+  }
+  
+  .login-overlay {
+    bottom: clamp(50px, 8vw, 100px);
+  }
+}
+
+/* Breakpoint específico para resolver problema do FAQ em 766x944 */
+@media (max-width: 945px) {
+  /* Garante que FAQ está centralizado */
+  .rectangle-9 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .faq2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+  }
+  
+  .d-vidas-sobre-o-projeto {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: clamp(30px, 5vw, 60px);
+  }
+  
+  .faq-container {
+    width: min(95%, 1280px);
+    margin: 0 auto clamp(40px, 5vw, 80px);
+  }
+  
+  .rectangle-162 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .rectangle-162-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .seta {
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+  
+  /* Garante que a caixa expansível abre para BAIXO */
+  .caixa-expansivel {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-top: -2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(64, 47, 38, 0.98);
+    backdrop-filter: blur(10px);
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    padding-top: 100px;
+  }
+  
+  nav.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  nav.active ul li {
+    animation: slideInLeft 0.4s ease-out forwards;
+  }
+  
+  nav.active ul li:nth-child(1) { animation-delay: 0.1s; }
+  nav.active ul li:nth-child(2) { animation-delay: 0.2s; }
+  nav.active ul li:nth-child(3) { animation-delay: 0.3s; }
+  nav.active ul li:nth-child(4) { animation-delay: 0.4s; }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  nav ul li a {
+    font-size: 32px;
+    padding: 1rem 2rem;
+    display: block;
+    width: 100%;
+  }
+  
+  header {
+    padding: 1rem;
+    width: 95%;
+  }
+  
+  .header-content {
+    flex-wrap: nowrap;
+  }
+  
+  .banner-container {
+    margin-top: 100px;
+    min-height: clamp(1100px, 145vh, 1700px);
+  }
+  
+  .rectangle-2 {
+    min-height: clamp(1100px, 145vh, 1700px);
+  }
+  
+  .banner-image {
+    min-height: clamp(1100px, 145vh, 1700px);
+  }
+  
+  .text-overlay {
+    top: clamp(120px, 14vw, 180px);
+    width: min(90%, 500px);
+  }
+  
+  .login-overlay {
+    bottom: clamp(40px, 6vw, 80px);
+  }
+  
+  .rectangle-14,
+  .rectangle-14-invertida {
+    margin: 20px auto;
+    border-radius: 20px;
+    max-width: 95%;
+  }
+  
+  .rectangle-162 {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  
+  .rectangle-162-text {
+    text-align: left;
+  }
+  
+  .fim-links {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    min-height: clamp(1200px, 165vh, 1900px);
+  }
+  
+  .rectangle-2 {
+    min-height: clamp(1200px, 165vh, 1900px);
+  }
+  
+  .banner-image {
+    min-height: clamp(1200px, 165vh, 1900px);
+  }
+  
+  .text-overlay {
+    top: clamp(110px, 12vw, 160px);
+    width: 95%;
+  }
+  
+  .text-overlay p {
+    font-size: 36px;
+  }
+  
+  .login-overlay {
+    bottom: clamp(30px, 5vw, 60px);
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .login-box,
+  #loginForm {
+    width: 100%;
+  }
+  
+  .btn-saiba-mais {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+  
+  .login-box h2 {
+    font-size: 32px;
+  }
+  
+  .sobre-aquanox,
+  .funcoes-aquanox,
+  .faq2 {
+    font-size: 40px;
+  }
+  
+  .rectangle-162 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .seta {
+    align-self: flex-end;
+  }
+  
+  .fim-links {
+    gap: 6px;
+    padding: 10px;
+  }
+  
+  .fim-link {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* ===== ANIMAÇÕES ADICIONAIS ===== */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== TOUCH GESTURES SUPPORT ===== */
+.swipeable {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.swipeable.swiping {
+  transition: none;
+}
+
+/* ===== SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== ACESSIBILIDADE ===== */
+*:focus-visible {
+  outline: 3px solid #73a8ce;
+  outline-offset: 2px;
+}
+
+/* ===== PERFORMANCE ===== */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
