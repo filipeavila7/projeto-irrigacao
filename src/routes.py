@@ -1,12 +1,111 @@
-from src import app
+from src import mail, app, login_manager
 from flask import render_template, redirect, jsonify, request, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from src.models import usuario_models
+from src.models.usuario_models import Usuario
 from src.services.usuario_services import cadastrar_usuario, listar_usuario_email
-from src import login_manager
-from datetime import datetime
+from datetime import datetime, timedelta
 from src.services.registro_services import RegistroService
 from src.services.valvula_services import ValvulaService
+from src.services.tempo_services import obter_cidades, obter_previsao_tempo, obter_estados, converter_data_para_dia
+from dotenv import load_dotenv
+from flask_mail import Message
+import os
+import jwt
+
+Usuario.verificar_senha
+
+chave = os.getenv('SECRET_KEY')
+token_usados = {}
+API_KEY = os.getenv('API_KEY')
+
+# Função para gerar o token JWT
+def gerar_token_jwt(email):
+    
+    exp = datetime.utcnow() + timedelta(minutes=2)  # Expira em 1 hora
+    payload = {
+        "email": email,
+        "exp": exp,
+        "used": False
+    }
+    token = jwt.encode(payload, chave, algorithm="HS256")
+    return token
+
+def verificar_token(token):
+    try:
+        # Decodifica o token JWT sem modificar o payload
+        payload = jwt.decode(token, chave, algorithms=['HS256'])
+
+        # Verifica se o token já foi usado (verificando se existe no dicionário)
+        if token in token_usados:
+            return False  # Token já foi utilizado
+
+        # Se o token não foi usado, armazena o token como utilizado
+        token_usados[token] = payload  # Armazena o token como utilizado
+
+        return True  # Token válido e ainda não utilizado
+
+    except jwt.ExpiredSignatureError:
+        return False  # Token expirado
+    except jwt.InvalidTokenError:
+        return False  # Token inválido
+
+# ------------ ROTA DA API DO TEMPO --------------------
+
+load_dotenv()
+
+API_KEY = os.getenv("key")
+
+@app.route("/estados", methods=["GET"])
+def pg_clima():
+    estados = obter_estados()
+    return jsonify(estados)
+
+@app.route('/cidades/<uf>')
+def api_cidades():
+    cidades = obter_cidades()
+    return jsonify(cidades)
+
+@app.route("/previsao", methods=["POST"])
+def previsao():
+    estado = request.form["estado"]
+    cidade = request.form["cidade"]
+    print(estado, cidade)
+    dados = obter_previsao_tempo(cidade, estado, API_KEY)
+    
+    if dados.get("cod") != "200":
+        print("Erro na resposta da API:", dados)
+        return "Erro ao obter dados. Verifique cidade e estado."
+
+    dias = {}
+    for item in dados["list"]:
+        data = item["dt_txt"].split()[0]
+        if data not in dias:
+            dias[data] = []
+        dias[data].append(item)
+
+    previsoes = []
+    for dia, entradas in dias.items():
+        dia_semana = converter_data_para_dia(dia)
+        temp_min = min(e["main"]["temp_min"] for e in entradas)
+        temp_max = max(e["main"]["temp_max"] for e in entradas)
+        umidade = entradas[0]["main"]["humidity"]
+        clima = entradas[0]["weather"][0]["description"]
+        vento = entradas[0]["wind"]["speed"]
+        chuva = entradas[0].get("rain", {}).get("3h", 0.0)
+        
+        previsoes.append({
+            "data": dia,
+            "dia_semana": dia_semana,
+            "temp_min": round(temp_min, 1),
+            "temp_max": round(temp_max, 1),
+            "umidade": umidade,
+            "clima": clima.capitalize(),
+            "vento": vento,
+            "chuva": chuva
+        })
+  
+    return jsonify(dados)
 
 
 # ------------ ROTA DE INICIAL --------------------
@@ -21,6 +120,7 @@ def index():
 @login_manager.user_loader
 def load_user(user_id):
     return usuario_models.Usuario.query.get(int(user_id))
+
 
 # ------------ ROTA DE LOGIN --------------------
 
@@ -60,7 +160,7 @@ def login():
 
     return render_template("login.html")
 
-
+# ------------ CADASTRO DE USUÁRIO --------------------
 
 @app.route('/cadastro_usuario', methods=['GET', 'POST'])
 def rota_cadastro_usuario():
@@ -106,7 +206,34 @@ def rota_cadastro_usuario():
     print("Requisição GET em /cadastro_usuario")
     return render_template('cadastro_usuario.html')
 
+@app.route('/esqueci_a_senha', methods=['GET', 'POST'])
+def esqueci_a_senha_route():
+    if request.method == 'GET':
+        return render_template('esqueci_a_senha.html')
 
+    data = request.get_json()
+    email = data.get('email')
+
+    usuario_encontrado = Usuario.query.filter_by(email=email).first()
+
+    if usuario_encontrado:
+        try:
+            token = gerar_token_jwt(email)
+            reset_url = url_for('resetar_senha_route', token=token, _external=True)
+
+            msg = Message(
+                subject='Redefinição de Senha',
+                sender='aquanox.contato@gmail.com',
+                recipients=[email],
+                body=f'Olá, {usuario_encontrado.name}!\n\nClique no link abaixo para redefinir sua senha:\n{reset_url}\n\nSe você não solicitou esta ação, ignore este e-mail.'
+            )
+            mail.send(msg)
+
+            return jsonify({"status": "sucesso", "message": "E-mail enviado com sucesso. Verifique sua caixa de entrada."})
+        except Exception as e:
+            return jsonify({"status": "erro", "message": f"Erro ao enviar e-mail: {str(e)}"})
+
+    return jsonify({"status": "erro", "message": "Usuário não encontrado."})
 
 
 # ============================================================
