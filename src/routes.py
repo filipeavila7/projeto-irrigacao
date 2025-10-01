@@ -142,10 +142,7 @@ def login():
 
             usuario_encontrado = usuario_models.Usuario.query.filter_by(email=email).first()
 
-            print(usuario_encontrado)
-            print(usuario_encontrado.senha if usuario_encontrado else "Usuário não encontrado")
-
-            if usuario_encontrado and usuario_encontrado.senha == senha:
+            if usuario_encontrado and usuario_encontrado.verificar_senha(senha):
                 login_user(usuario_encontrado)
                 # Retornar JSON com a URL para redirecionar
                 return jsonify({"redirect_url": url_for("index")})
@@ -159,6 +156,7 @@ def login():
             return jsonify({"message": "Erro interno", "error": str(e)}), 500
 
     return render_template("login.html")
+
 
 # ------------ CADASTRO DE USUÁRIO --------------------
 
@@ -179,12 +177,15 @@ def rota_cadastro_usuario():
                 print("Faltando campos obrigatórios")
                 return jsonify({"message": "Nome, email e senha são obrigatórios."}), 400
 
-            # Cria usuário com senha em texto claro (sem hash)
-            usuario = usuario_models.Usuario(nome=nome, email=email, senha=senha)
+            # Cria usuário
+            usuario = usuario_models.Usuario(nome=nome, email=email)
+            
+            # Gera hash da senha usando o método gen_senha
+            usuario.gen_senha(senha)
 
-            # DEBUG: mostra a senha armazenada (em texto claro)
+            # DEBUG: mostra a senha armazenada (hash)
             print(f"Senha original: {senha}")
-            print(f"Senha armazenada: {usuario.senha}")
+            print(f"Senha armazenada (hash): {usuario.senha}")
 
             # Salva no banco
             cadastrar_usuario(usuario)
@@ -205,6 +206,7 @@ def rota_cadastro_usuario():
     # Se for GET, apenas renderiza o formulário
     print("Requisição GET em /cadastro_usuario")
     return render_template('cadastro_usuario.html')
+
 
 @app.route('/esqueci_a_senha', methods=['GET', 'POST'])
 def esqueci_a_senha_route():
