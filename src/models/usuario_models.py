@@ -10,13 +10,15 @@ class Usuario(db.Model, UserMixin):
     email = db.Column(db.String(120), nullable=False, unique=True)  
     senha = db.Column(db.String(255), nullable=False)                
 
+
+    '''
     # Gera o hash da senha e armazena no campo 'senha'
     def gen_senha(self, senha):
         self.senha = generate_password_hash(senha)
 
     # Verifica se a senha informada corresponde ao hash armazenado
     def verificar_senha(self, senha):
-        return check_password_hash(self.senha, senha)
+        return check_password_hash(self.senha, senha)'''
     
 
 
