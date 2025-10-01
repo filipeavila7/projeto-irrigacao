@@ -1,4 +1,5 @@
 from src import mail, app, login_manager
+from src.services.usuario_services import alterar_senha
 from flask import render_template, redirect, jsonify, request, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from src.models import usuario_models
@@ -236,6 +237,34 @@ def esqueci_a_senha_route():
             return jsonify({"status": "erro", "message": f"Erro ao enviar e-mail: {str(e)}"})
 
     return jsonify({"status": "erro", "message": "Usuário não encontrado."})
+
+@app.route('/painelAdmin/alterar_senha', methods=['POST'])
+@login_required
+def alterar_senha_route():
+    usuario = Usuario.query.get(current_user.id)
+
+    dados = request.get_json()
+
+    if not usuario:
+        return jsonify({"message": "Usuário não encontrado!"}), 404
+
+    senha = dados.get('senha')
+    nova_senha = dados.get('nova_senha')
+    confirmar_senha = dados.get('confirmar_senha')
+
+    if not all([senha, nova_senha, confirmar_senha]):
+        return jsonify({"message": "Todos os campos são obrigatórios!"}), 400
+
+    try:        
+        alterar_senha(usuario, senha, nova_senha, confirmar_senha)
+        return jsonify({"message": "Senha Alterada com sucesso!"}), 200
+
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
+    except Exception as e:
+        app.logger.error(f"Erro ao alterar senha: {str(e)}")
+    return jsonify({"message": "Erro interno ao processar a solicitação."}), 500
 
 
 # ============================================================
