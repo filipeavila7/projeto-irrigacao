@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciamento de Válvulas</title>
+  <link rel="stylesheet" href="/static/css/valvulas.css">
+</head>
+<body>
+
+
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, button {
+  margin-top: 5px;
+  padding: 8px;
+  width: 300px;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.message.error {
+  color: red;
+}
+
+.message.success {
+  color: green;
+}
+
+.valvula-item {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+    </style>
+
+
+  <h1>Cadastro de Válvula</h1>
+
+  <form id="cadastroForm">
+    <label for="nome_valvula">Nome da Válvula:</label>
+    <input type="text" id="nome_valvula" name="nome_valvula" required />
+
+    <label for="local_valvula">Local da Válvula:</label>
+    <input type="text" id="local_valvula" name="local_valvula" />
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <div id="mensagem" class="message"></div>
+
+  <hr />
+
+  <h2>Lista de Válvulas</h2>
+  <button onclick="carregarValvulas()">Recarregar Lista</button>
+  <div id="lista_valvulas"></div>
+
+  <script>
+    const mensagemDiv = document.getElementById('mensagem');
+
+    // CADASTRO
+    document.getElementById('cadastroForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nome_valvula = document.getElementById('nome_valvula').value.trim();
+      const local_valvula = document.getElementById('local_valvula').value.trim();
+
+      if (!nome_valvula) {
+        exibirMensagem('Nome da válvula é obrigatório.', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/valvulas/cadastro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome_valvula, local_valvula })
+        });
+
+        if (res.ok) {
+          exibirMensagem('Válvula cadastrada com sucesso!', 'success');
+          document.getElementById('cadastroForm').reset();
+          carregarValvulas();
+        } else {
+          const text = await res.text();
+          exibirMensagem(text, 'error');
+        }
+      } catch (err) {
+        exibirMensagem('Erro: ' + err.message, 'error');
+      }
+    });
+
+    // LISTAR VÁLVULAS
+    async function carregarValvulas() {
+      const listaDiv = document.getElementById('lista_valvulas');
+      listaDiv.innerHTML = 'Carregando...';
+
+      try {
+        const res = await fetch('/api/valvulas/');
+        const json = await res.json();
+
+        if (json.sucesso && json.valvulas.length) {
+          listaDiv.innerHTML = '';
+          json.valvulas.forEach(valvula => {
+            const item = document.createElement('div');
+            item.classList.add('valvula-item');
+            item.innerHTML = `
+              <strong>ID ${valvula.id}</strong><br>
+              Nome: <input value="${valvula.nome_valvula}" data-id="${valvula.id}" class="edit-nome" />
+              Local: <input value="${valvula.local_valvula || ''}" data-id="${valvula.id}" class="edit-local" />
+              <button onclick="salvarEdicao(${valvula.id})">Salvar</button>
+              <button onclick="deletarValvula(${valvula.id})">Deletar</button>
+              <button onclick="alternarStatus(${valvula.id})">Ligar/Desligar</button>
+              <span id="status-${valvula.id}"></span>
+            `;
+            listaDiv.appendChild(item);
+            obterStatus(valvula.id);
+          });
+        } else {
+          listaDiv.textContent = 'Nenhuma válvula encontrada.';
+        }
+      } catch (err) {
+        listaDiv.textContent = 'Erro ao carregar válvulas: ' + err.message;
+      }
+    }
+
+    // ATUALIZAR VÁLVULA
+    async function salvarEdicao(id) {
+      const nome = document.querySelector(`.edit-nome[data-id="${id}"]`).value.trim();
+      const local = document.querySelector(`.edit-local[data-id="${id}"]`).value.trim();
+
+      try {
+        const res = await fetch(`/api/valvulas/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome_valvula: nome, local_valvula: local })
+        });
+        const json = await res.json();
+        exibirMensagem(json.mensagem || 'Atualizado!', res.ok ? 'success' : 'error');
+        carregarValvulas();
+      } catch (err) {
+        exibirMensagem('Erro ao atualizar: ' + err.message, 'error');
+      }
+    }
+
+    // DELETAR VÁLVULA
+    async function deletarValvula(id) {
+      if (!confirm(`Deseja deletar a válvula ID ${id}?`)) return;
+
+      try {
+        const res = await fetch(`/api/valvulas/${id}`, { method: 'DELETE' });
+        const json = await res.json();
+        exibirMensagem(json.mensagem || 'Válvula deletada!', res.ok ? 'success' : 'error');
+        carregarValvulas();
+      } catch (err) {
+        exibirMensagem('Erro ao deletar: ' + err.message, 'error');
+      }
+    }
+
+    // OBTER STATUS
+    async function obterStatus(id) {
+      try {
+        const res = await fetch(`/api/valvulas/${id}/status`);
+        const json = await res.json();
+        if (json.sucesso) {
+          const span = document.getElementById(`status-${id}`);
+          span.textContent = `Status: ${json.status ? 'Ligada' : 'Desligada'}`;
+        }
+      } catch (err) {
+        console.log('Erro ao obter status:', err.message);
+      }
+    }
+
+    // LIGAR/DESLIGAR
+    async function alternarStatus(id) {
+      try {
+        const resStatus = await fetch(`/api/valvulas/${id}/status`);
+        const statusData = await resStatus.json();
+        const ativar = !statusData.status;
+
+        const res = await fetch(`/api/valvulas/${id}/acionar`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ativar })
+        });
+
+        const json = await res.json();
+        exibirMensagem(json.mensagem || 'Status alterado!', res.ok ? 'success' : 'error');
+        obterStatus(id);
+      } catch (err) {
+        exibirMensagem('Erro ao alternar status: ' + err.message, 'error');
+      }
+    }
+
+    function exibirMensagem(msg, tipo = 'info') {
+      mensagemDiv.textContent = msg;
+      mensagemDiv.className = 'message ' + tipo;
+    }
+
+    carregarValvulas();
+  </script>
+</body>
+</html>
