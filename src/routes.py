@@ -1,5 +1,4 @@
 from src import mail, app, login_manager
-from src.services.usuario_services import alterar_senha
 from flask import render_template, redirect, jsonify, request, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from src.models import usuario_models
@@ -146,7 +145,7 @@ def login():
             if usuario_encontrado and usuario_encontrado.verificar_senha(senha):
                 login_user(usuario_encontrado)
                 # Retornar JSON com a URL para redirecionar
-                return jsonify({"redirect_url": url_for("index")})
+                return jsonify({"redirect_url": url_for("cadastro_valvula")})
 
             else:
                 print("Senha incorreta ou usuário não encontrado")
@@ -238,7 +237,7 @@ def esqueci_a_senha_route():
 
     return jsonify({"status": "erro", "message": "Usuário não encontrado."})
 
-@app.route('/painelAdmin/alterar_senha', methods=['POST'])
+'''@app.route('/painelAdmin/alterar_senha', methods=['POST'])
 @login_required
 def alterar_senha_route():
     usuario = Usuario.query.get(current_user.id)
@@ -264,7 +263,7 @@ def alterar_senha_route():
 
     except Exception as e:
         app.logger.error(f"Erro ao alterar senha: {str(e)}")
-    return jsonify({"message": "Erro interno ao processar a solicitação."}), 500
+    return jsonify({"message": "Erro interno ao processar a solicitação."}), 500'''
 
 
 # ============================================================

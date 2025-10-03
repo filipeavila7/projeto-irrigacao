@@ -1,10 +1,7 @@
 from src.models.usuario_models import Usuario
 from src import db
-from flask import flash, jsonify
+from flask import jsonify
 from sqlalchemy.exc import SQLAlchemyError
-from ..entities.usuario_entities import Usuario
-from passlib.hash import pbkdf2_sha256
-
 
 def cadastrar_usuario(usuario):
     usuario_db = Usuario(nome=usuario.nome, email=usuario.email, senha=usuario.senha)
@@ -29,7 +26,6 @@ def listar_usuario_email(email):
     return usuario_encontrado
 
 
-
 def alterar_senha(usuario, senha, nova_senha, confirmar_senha):
     """Altera a senha do usuário, verificando se as senhas coincidem e se a senha atual está correta."""
     try:
@@ -40,6 +36,7 @@ def alterar_senha(usuario, senha, nova_senha, confirmar_senha):
         # Verifica se a senha atual está correta
         if not usuario.verifica_senha(senha):
             return jsonify({"message": "Senha atual incorreta!"}), 400
+
 
         # Atualiza a senha do usuário
         usuario.senha = Usuario.gen_senha(nova_senha)
@@ -54,10 +51,3 @@ def alterar_senha(usuario, senha, nova_senha, confirmar_senha):
     except Exception as e:
         return jsonify({"message": "Erro inesperado ao alterar a senha.", "error": str(e)}), 500
 
-
-def resetar_senha(usuario: Usuario, password):
-    # Gera o hash da nova senha e atualiza no banco de dados
-    usuario.password = pbkdf2_sha256.hash(password)
-    db.session.commit()
-
-    return jsonify({"message": "Senha redefinida com sucesso!"}), 200
