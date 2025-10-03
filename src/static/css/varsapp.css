@@ -1,0 +1,20 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --degrade: linear-gradient(
+    90deg,
+    rgba(31, 91, 44, 1) 0%,
+    rgba(61, 129, 76, 1) 53.36538553237915%,
+    rgba(31, 91, 44, 1) 100%
+  );
+
+  /* Fonts */
+  /* Effects */
+}
+/* Figma Color Variables of your File */
+[data-variable-collection-mode="mode-1"] {
+  /* mode-1 */
+  --color-1: #413027;
+  --color-2: #73a8ce;
+  --color-3: #efe4b0;
+}

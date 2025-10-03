@@ -1,0 +1,1718 @@
+/* Reset e Estilos Gerais */
+
+body {
+  background-image: url("img/fundo.png"); /* Define a imagem de fundo */
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: transparent;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Remove o deslocamento da imagem de fundo */
+body::before {
+  content: "";
+  background-size: cover;
+  background-position: top; /* Posiciona a imagem exatamente no topo */
+  background-repeat: no-repeat;
+  position: fixed; /* Fixa a imagem para rolar com a página */
+  top: 0; /* Ajusta a posição para o topo */
+  left: 0;
+  right: 0;
+  height: 100vh; /* Altura total da viewport */
+  z-index: -1; /* Coloca atrás de todo conteúdo */
+}
+
+/* Header */
+header {
+  background-color: #402f26;
+  padding: 0.5rem 1.5rem; /* Aumenta o padding para deixar mais grosso */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 80px; /* Bordas arredondadas */
+  width: 68%; /* Reduz a largura do header */
+  margin: 0 auto; /* Centraliza o header horizontalmente */
+  position: absolute; /* Torna o header posicionado sobre a imagem */
+  top: 60px; /* Ajusta a posição do header */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Centraliza o header */
+  z-index: 10; /* Garante que o header fique acima da imagem de fundo */
+}
+
+.rectangle-2 {
+  background: linear-gradient(
+    0deg,
+    rgba(115, 168, 206, 1) 0%,
+    rgba(217, 217, 217, 0) 100%
+  );
+  width: 100%;
+  height: 104%;
+  position: absolute;
+  left: 0px;
+  top: -72px;
+}
+.header-content {
+  display: flex;
+  justify-content: flex-start; /* Alinha o conteúdo do header mais para a esquerda */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 50px; /* Diminui a altura da logo */
+  width: auto;
+  margin-left: 50px;
+}
+
+.user-icon {
+  height: 50px; /* Define a altura da imagem */
+  width: auto; /* Mantém a proporção da imagem */
+  margin-left: 300px; /* Empurra a imagem para o lado direito */
+  cursor: pointer; /* Adiciona um cursor de ponteiro */
+}
+
+/* Importação correta da fonte Inria Sans via link */
+@import url("https://fonts.googleapis.com/css?family=Inria+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&display=swap"); /* Importa a fonte Karantina */
+
+/* Importação local da fonte Inria Sans Bold da pasta static/fonts */
+@font-face {
+  font-family: "Inria Sans Bold Local";
+  src: url("/static/fonts/inria-sans.bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inria Sans Light Local";
+  src: url("/static/fonts/inria-sans.light.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inria Sans Regular Local";
+  src: url("/static/fonts/inria-sans.regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Remova os @font-face da Inria Sans */
+@font-face {
+  font-family: "Karantina-Regular";
+  src: url("/static/fonts/Karantina-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karantina-Bold";
+  src: url("/static/fonts/Karantina-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa-Heavy";
+  src: url("/static/fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  justify-content: start; /* Alinha os itens à esquerda */
+  margin-left: 15rem; /* Adiciona margem à esquerda para movê-los um pouco para a direita */
+  padding-left: 0; /* Remove qualquer padding padrão */
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 40px; /* Aumenta o tamanho da fonte */
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: "Karantina-Regular"; /* Aplica a fonte Karantina-Regular */
+}
+
+nav ul li a:hover {
+  color: #2c3e50;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.banner-container {
+  position: top;
+  width: 100%;
+  height: calc(100vh - 80px); /* Altura da viewport menos altura do header */
+  min-height: 500px;
+  margin-top: 0; /* Remove margem para colar no header */
+}
+
+.banner-image {
+  width: 100%;
+  height: 104%;
+  object-fit: cover;
+  position: relative;
+}
+
+.text-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 682px;
+  position: absolute;
+  left: 320px;
+  top: 240px;
+}
+
+.text-overlay p {
+  color: #413027;
+  text-align: left;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 100px;
+  font-weight: 400;
+  position: relative;
+  width: 665px;
+  top: -140px;
+  line-height: 1; /* Reduz o espaçamento entre as linhas */
+}
+
+.btn-saiba-mais {
+  background: #413027;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 40px;
+  color: white;
+  border-radius: 80px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 179px;
+  height: 63px;
+  position: relative;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.maki-arrow {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 23px;
+  height: 23px;
+  position: relative;
+  aspect-ratio: 1;
+  background: white; /* círculo branco por padrão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+/* Para o SVG dentro do .maki-arrow */
+.maki-arrow svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: #413027; /* seta marrom por padrão */
+  transition: fill 0.2s;
+}
+
+/* Hover e Focus: fundo branco, círculo marrom, seta branca, borda marrom */
+.btn-saiba-mais:hover,
+.btn-saiba-mais:focus,
+.btn-saiba-mais:active {
+  background: white;
+  color: #413027;
+  border-color: #413027;
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.btn-saiba-mais:hover .maki-arrow,
+.btn-saiba-mais:focus .maki-arrow,
+.btn-saiba-mais:active .maki-arrow {
+  background: #413027 !important; /* círculo marrom */
+}
+
+.btn-saiba-mais:hover .maki-arrow svg,
+.btn-saiba-mais:focus .maki-arrow svg,
+.btn-saiba-mais:active .maki-arrow svg {
+  fill: #fff !important; /* seta branca */
+}
+
+.btn-saiba-mais:hover,
+.btn-saiba-mais:hover * {
+  color: #413027 !important;
+}
+
+.saiba-mais-container {
+  position: absolute;
+  top: 700px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.saiba-mais-email {
+  color: #fff;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 32px;
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+  text-align: start;
+}
+
+.btn-saiba-mais-rectangle7 {
+  background: #73a8ce;
+  top: 370px;
+  left: 30px;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  border-radius: 80px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  padding: 8px 48px;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 550px;
+  height: 63px;
+  position: relative;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn-saiba-mais-rectangle7 .maki-arrow {
+  display: none;
+}
+
+.btn-saiba-mais-rectangle7:hover,
+.btn-saiba-mais-rectangle7:focus,
+.btn-saiba-mais-rectangle7:active {
+  background: rgb(0, 0, 0);
+  color: #73a8ce;
+  border-color: #73a8ce;
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.btn-saiba-mais-rectangle7:hover .maki-arrow,
+.btn-saiba-mais-rectangle7:focus .maki-arrow,
+.btn-saiba-mais-rectangle7:active .maki-arrow {
+  background: #73a8ce !important;
+}
+
+.btn-saiba-mais-rectangle7:hover .maki-arrow svg,
+.btn-saiba-mais-rectangle7:focus .maki-arrow svg,
+.btn-saiba-mais-rectangle7:active .maki-arrow svg {
+  fill: #fff !important;
+}
+
+.btn-saiba-mais-rectangle7:hover,
+.btn-saiba-mais-rectangle7:hover * {
+  color: #73a8ce !important;
+}
+
+/* Estilos do formulário de recuperação de senha (forgot.html) */
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #5b5b5b;
+  color: #fff;
+}
+.box {
+  background: #6e6e6e;
+  padding: 30px;
+  border-radius: 16px;
+  width: 300px;
+  margin: 80px auto;
+  text-align: center;
+  box-shadow: 0 0 10px #0003;
+}
+.box h2 {
+  margin-bottom: 20px;
+}
+.box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+}
+.box button,
+.box a {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+.box button {
+  background: linear-gradient(
+    90deg,
+    #4caf50,
+    #81c784
+  ); /* Gradiente para o botão */
+  color: #fff;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+  font-weight: bold;
+  padding: 15px 20px; /* Aumenta o tamanho do botão */
+  border: none;
+  border-radius: 12px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s; /* Transições suaves */
+  display: block;
+  margin: 20px auto; /* Centraliza o botão horizontalmente */
+  text-align: center;
+  width: 80%; /* Ajusta a largura do botão */
+}
+
+.box button:hover {
+  transform: scale(1.05); /* Leve aumento ao passar o mouse */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+.box a {
+  background: transparent;
+  color: #81c784;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.box a:hover {
+  color: #4caf50; /* Cor mais escura ao passar o mouse */
+}
+
+.aux-link {
+  text-align: right;
+}
+.aux-link a {
+  font-size: 12px;
+}
+.flash {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+.flash li {
+  background: #f66;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.flash li.success {
+  background: #6f6;
+}
+
+/* ...existing code... */
+.login-overlay {
+  position: absolute;
+  top: 85%;
+  right: 13%;
+  transform: translateY(-50%);
+}
+
+.aux-link {
+  text-align: right;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.aux-link a {
+  color: black;
+  opacity: 50%;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.aux-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .text-overlay,
+  .login-overlay {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .banner-container {
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+/* Conteúdo Principal */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Seção Login e Recuperação */
+.login-overlay {
+  position: absolute;
+  top: 85%;
+  right: 13%;
+  transform: translateY(-50%);
+}
+
+.login-box {
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  font-size: 48px;
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  top: -5px;
+}
+.login-box h3 {
+  font-size: 15px;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  color: black;
+  margin-bottom: 0px;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  top: -30px;
+  opacity: 50%;
+}
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.login-box .btn-entrar {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: block;
+  margin: 0px;
+  text-align: center;
+  width: 350px;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.login-box .btn-entrar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aux-link {
+  text-align: right;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.aux-link a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.aux-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .text-overlay,
+  .login-overlay {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .banner-container {
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+/* Conteúdo Principal */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Estilos para o formulário de recuperação */
+#forgotPasswordForm {
+  position: absolute;
+  top: 35%; /* Alterado para 35% para subir mais o formulário */
+  right: 13%; /* Mesma posição horizontal do formulário de login */
+  transform: translateY(20%); /* Posição inicial mais abaixo para a animação */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Mesma aparência do formulário de login */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px); /* Efeito de desfoque sutil */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+  padding: 2rem;
+  border-radius: 16px; /* Aumentado para bordas mais arredondadas */
+  width: 350px;
+  display: block; /* Certifique-se de que o formulário está visível */
+  opacity: 0; /* Inicialmente invisível */
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out; /* Transição mais suave */
+}
+
+#forgotPasswordForm.show {
+  opacity: 1; /* Torna visível ao adicionar a classe */
+  transform: translateY(-100%); /* Posição final mais acima */
+}
+
+#loginForm {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 40px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  box-shadow:
+    inset -33.43px 33.43px 33.43px 0px rgba(255, 255, 255, 0.1),
+    inset 33.43px -33.43px 33.43px 0px rgba(165, 165, 165, 0.1),
+    -4px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10.03px);
+  width: 420px;
+  height: 480px;
+  max-width: 90vw;
+  margin: 0 auto;
+  position: relative;
+  top: -68px;
+  right: 13%;
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out; /* Transição suave */
+}
+
+#loginForm.hide {
+  opacity: 0; /* Torna invisível */
+  transform: translateY(-10%); /* Posição inicial para a animação de saída */
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out; /* Transição suave */
+}
+
+#loginForm.show {
+  opacity: 1; /* Torna visível */
+  transform: translateY(-50%); /* Sempre centralizado ao mostrar */
+  transition:
+    opacity 0.6s ease-in,
+    transform 0.6s ease-in; /* Transição suave */
+}
+
+#loginForm.from-forgot {
+  opacity: 0.7;
+  transform: translateY(30%);
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out;
+}
+
+#loginForm.from-forgot.show {
+  opacity: 1;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.6s ease-in-out;
+}
+
+/* Efeito de overlay */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #5b5b5b;
+  color: #fff;
+}
+
+.box {
+  background: #6e6e6e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 80px auto;
+  text-align: center;
+  box-shadow: 0 0 10px #0003;
+}
+
+.box h2 {
+  margin-bottom: 20px;
+}
+
+.box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+.box button,
+.box a {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.box button {
+  background: #5df28a;
+  color: #fff;
+  cursor: pointer;
+}
+
+.box a {
+  background: transparent;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.aux-link {
+  text-align: right;
+}
+
+.aux-link a {
+  font-size: 12px;
+}
+
+.flash {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.flash li {
+  background: #f66;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.flash li.success {
+  background: #6f6;
+}
+
+/* Estilos para o botão de alternar visibilidade da senha */
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%; /* O campo ocupa toda a largura */
+  padding-right: 40px; /* Espaço interno à direita para o botão */
+  word-break: break-all; /* Quebra o texto antes de ficar por baixo do botão */
+  border-radius: 10px;
+}
+
+.password-container .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 36%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  z-index: 1; /* Garante que o botão fique acima do texto */
+}
+
+.descricao-inria {
+  margin-top: -180px; /* Move a caixa de texto para cima */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 665px;
+}
+
+.inria-bold {
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #413027;
+  display: block;
+  margin-top: -70px;
+}
+
+.inria-regular {
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  color: #413027;
+  display: block;
+  margin-top: 4px;
+  line-height: 1.5;
+  margin-top: -10px;
+}
+
+.rectangle-7 {
+  background: #413027;
+  width: 1939px;
+  height: 1500px;
+  position: absolute;
+  left: -34px;
+  top: 858px;
+  z-index: 1;
+}
+
+.rectangle-8 {
+  background: #73a8ce;
+  width: 1939px;
+  height: 100%;
+  position: absolute;
+  left: -34px;
+  top: 2100px;
+  z-index: 1;
+}
+
+.img-irrigacao-rectangle8 {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sobre-aquanox {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 96px;
+  letter-spacing: 0.9px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 333px);
+  top: 40px;
+  width: 789px;
+  height: 79px;
+  z-index: 2;
+}
+
+.texto-sobre-aquanox {
+  position: absolute;
+  top: 300px;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Inria Sans Light Local", sans-serif;
+  text-align: left;
+  line-height: 1.4;
+  z-index: 2;
+  position: absolute;
+  left: 450px;
+  width: 308px;
+}
+
+.funcoes-aquanox {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Karantina-Regular", sans-serif;
+  font-size: 96px;
+  letter-spacing: 0.9px;
+  font-weight: 400;
+  position: absolute;
+  left: 770px;
+  top: 40px;
+  height: 79px;
+  z-index: 2;
+}
+
+.rectangle-14 {
+  background: linear-gradient(135deg, #2ecc71 0%, #1f5b2c 100%);
+  border-radius: 20px 200px 20px 200px;
+  border-width: 0;
+  border-style: none;
+  border-image: none;
+  width: 690px;
+  height: 228px;
+  position: absolute;
+  left: 990px;
+  top: 300px;
+  transform: none;
+  z-index: 3;
+  transition:
+    transform 0.7s cubic-bezier(0.4, 1.5, 0.5, 1),
+    box-shadow 0.7s,
+    background 0.4s;
+  cursor: pointer;
+}
+
+.rectangle-14-invertida {
+  background: linear-gradient(135deg, #2ecc71 0%, #1f5b2c 100%);
+  border-radius: 200px 20px 200px 20px;
+  border-width: 0;
+  border-style: none;
+  border-image: none;
+  width: 690px;
+  height: 228px;
+  position: absolute;
+  left: 300px;
+  top: 500px;
+  transform: none;
+  z-index: 3;
+  transition:
+    transform 1.2s cubic-bezier(0.4, 1.5, 0.5, 1),
+    box-shadow 1.2s,
+    background 0.6s;
+  cursor: pointer;
+}
+
+.rectangle-14,
+.rectangle-14-invertida {
+  background: linear-gradient(135deg, #2ecc71 0%, #1f5b2c 100%);
+}
+
+.rectangle-14.hover,
+.rectangle-14-invertida.hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.22);
+  background: linear-gradient(315deg, #2ecc71 0%, #1f5b2c 100%);
+  z-index: 4;
+}
+
+.rectangle-14-content {
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  right: 40px;
+  color: #fff;
+  z-index: 4;
+  width: 590px;
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.rectangle-14-content h2 {
+  font-family:
+    "Inria Sans Bold Local", Arial, sans-serif; /* Usa apenas a fonte local para o h2 */
+  font-size: 48px;
+  margin: 0px 200px;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.rectangle-14-content p {
+  font-family: "Inria Sans Regular Local", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin: -5px 0px 0px 30px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.rectangle-14-content-invertida {
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  right: 40px;
+  color: #fff;
+  z-index: 4;
+  width: 590px;
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.rectangle-14-content-invertida h2 {
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-size: 48px;
+  margin: 0px 60px;
+  color: #fff;
+  letter-spacing: 0.05em;
+  width: 700px;
+}
+
+.rectangle-14-content-invertida p {
+  font-family: "Inria Sans Regular Local", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin: -5px 0px 0px 10px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.rectangle-9 {
+  background: #413027;
+  width: 1939px;
+  height: 1500px;
+  position: absolute;
+  left: -34px;
+  top: 3030px; /* Ajuste conforme necessário para ficar logo abaixo do .rectangle-8 */
+  z-index: 1;
+}
+
+/* FAQ e dúvidas posicionados no início do .rectangle-9 */
+.faq2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Karantina-Bold", sans-serif;
+  font-size: 89px;
+  line-height: 85.78%;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  left: 430px;
+  top: 90px;
+  width: 98px;
+  height: 74px;
+}
+.d-vidas-sobre-o-projeto {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inria Sans Bold Local", sans-serif;
+  font-size: 36px;
+  line-height: 85.78%;
+  font-weight: 700;
+  position: absolute;
+  left: 550px;
+  top: 100px;
+  width: 250px;
+  height: 60px;
+}
+
+.rectangle-162 {
+  background: #2b201b;
+  border-radius: 18.17px;
+  width: 1280px;
+  height: 77px;
+  position: relative;
+  left: 425px;
+  bottom: 0%;
+  top: 250px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.rectangle-162-text {
+  color: #fff;
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.seta {
+  height: 30px;
+  width: auto;
+  margin-left: auto;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+.seta.girada {
+  transform: rotate(180deg);
+}
+
+.caixa-expansivel {
+  background: #6d4c37;
+  border-radius: 0 0 18.17px 18.17px;
+  width: 1280px;
+  min-height: 180px;
+  position: absolute;
+  left: 0;
+  top: 77px; /* exatamente abaixo do rectangle-162 */
+  margin-top: 0;
+  z-index: 1;
+  opacity: 0;
+  max-height: 0;
+
+  transition:
+    opacity 1.2s cubic-bezier(0.4, 1.5, 0.5, 1),
+    max-height 1.2s cubic-bezier(0.4, 1.5, 0.5, 1),
+    padding 1.2s cubic-bezier(0.4, 1.5, 0.5, 1);
+  box-sizing: border-box;
+  padding: 0 48px;
+  display: block;
+}
+
+.caixa-expansivel.show {
+  opacity: 1;
+  max-height: 400px;
+  padding: 32px 48px;
+}
+
+.rectangle-9 {
+  background: #413027;
+  width: 1939px;
+  height: 1500px;
+  position: absolute;
+  left: -34px;
+  top: 3030px; /* Ajuste conforme necessário para ficar logo abaixo do .rectangle-8 */
+  z-index: 1;
+  /* contexto de posicionamento para .caixa-expansivel */
+}
+
+.caixa-expansivel-text {
+  color: #fff;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.img-show {
+  background: #73a8ce;
+  width: 1939px;
+  height: 125%;
+  position: absolute;
+  left: -34px;
+  top: 4000px;
+  z-index: 1;
+}
+
+.img-aaa {
+  background: transparent;
+  width: 1281px;
+  height: 810px;
+  position: absolute;
+  left: 370px;
+  top: 4100px;
+  z-index: 2;
+
+  border-radius: 50px;
+}
+
+.img-logo-below-aaa {
+  background: transparent;
+  width: 151px;
+  height: 44px;
+  position: absolute;
+  left: 910px;
+  top: 4990px;
+  z-index: 3;
+  display: block;
+}
+
+.img-fim {
+  background: transparent;
+  width: 1919px;
+  height: 172px;
+  position: absolute;
+  left: 0px;
+  top: 5100px;
+  z-index: 4;
+  display: block;
+}
+
+.fim-links {
+  position: absolute;
+  top: 5110px;
+  left: 750px;
+  transform: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: none;
+  border-radius: 0;
+  padding: revert-layer;
+  box-shadow: none;
+  align-items: flex-start;
+}
+
+.fim-link {
+  color: #fff;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 2px 1px;
+  border-radius: 12px;
+  background: none;
+  transition: color 0.2s;
+  letter-spacing: 1px;
+  box-shadow: none;
+  margin-top: 0;
+  border: none;
+  display: block;
+  text-align: left;
+}
+
+.fim-link:hover {
+  color: #73a8ce;
+  background: none;
+  transform: none;
+}
+
+/* Adições do aaa.css que não estavam em styleinicial.css */
+section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.funcao-item {
+  margin-top: 1.5rem;
+}
+
+.funcao-item h3 {
+  font-family: "Karantina-Bold", "Karantina-Regular", cursive, sans-serif;
+  font-weight: bold;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.funcao-item p {
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.btn-appstore,
+.btn-playstore {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-appstore {
+  background-color: #000;
+  color: white;
+}
+
+.btn-playstore {
+  background-color: #0f9d58;
+  color: white;
+}
+
+.btn-appstore:hover,
+.btn-playstore:hover {
+  transform: translateY(-3px);
+}
+
+.faq-list {
+  list-style-position: inside;
+  margin-top: 1.5rem;
+}
+
+.faq-list li {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Garante que o formulário de recuperação tenha prioridade de estilo */
+/* Formatação igual ao login-box para o formulário de recuperação, com transparência e posição mais acima */
+#forgotPasswordForm.login-box,
+.login-box.forgot-password-container,
+div#forgotPasswordForm {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 40px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  width: 420px;
+  height: 480px;
+  position: relative;
+  box-shadow:
+    inset -33.43px 33.43px 33.43px 0px rgba(255, 255, 255, 0.1),
+    inset 33.43px -33.43px 33.43px 0px rgba(165, 165, 165, 0.1),
+    -4px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10.03px);
+  top: 25%; /* Mais para cima que o login */
+  right: 13%;
+  left: auto;
+  transform: translateY(-20%);
+  display: block;
+  z-index: 100;
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+/* Animação de entrada/saída igual ao login */
+#forgotPasswordForm.show,
+.login-box.forgot-password-container.show,
+div#forgotPasswordForm.show {
+  opacity: 1;
+  transform: translateY(-68%);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+/* Inputs e botão igual ao login */
+#forgotPasswordForm input[type="email"],
+.login-box.forgot-password-container input[type="email"] {
+  width: 350px;
+  padding: 12px;
+  margin-bottom: 0rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+#forgotPasswordForm .btn-enviar,
+.login-box.forgot-password-container .btn-enviar {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+}
+
+#forgotPasswordForm .btn-enviar:hover,
+.login-box.forgot-password-container .btn-enviar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#forgotPasswordForm h2,
+.login-box.forgot-password-container h2 {
+  font-size: 48px;
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  top: -5px;
+  line-height: 1.4;
+  width: auto;
+}
+
+#forgotPasswordForm .aux-link,
+.login-box.forgot-password-container .aux-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#forgotPasswordForm .aux-link a,
+.login-box.forgot-password-container .aux-link a {
+  color: black;
+  opacity: 70%;
+  text-decoration: underline;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 40px;
+}
+
+/* Responsivo igual ao login */
+@media (max-width: 900px) {
+  #forgotPasswordForm.login-box,
+  .login-box.forgot-password-container,
+  div#forgotPasswordForm {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+    right: auto;
+    left: auto;
+    top: auto;
+  }
+}
+
+/* Caixa de confirmação de envio de email (sent.html) */
+#sentBox,
+.sent-box {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 40px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  width: 420px;
+  height: 480px;
+  position: relative;
+  box-shadow:
+    inset -33.43px 33.43px 33.43px 0px rgba(255, 255, 255, 0.1),
+    inset 33.43px -33.43px 33.43px 0px rgba(165, 165, 165, 0.1),
+    -4px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10.03px);
+  top: 25%; /* Mais para cima que o login */
+  right: 13%;
+  left: auto;
+  transform: translateY(20%);
+  opacity: 0;
+  display: block;
+  z-index: 200;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+#sentBox.show,
+.sent-box.show {
+  opacity: 1;
+  transform: translateY(-68%);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+#sentBox.hide,
+.sent-box.hide {
+  opacity: 0;
+  transform: translateY(10%);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+  pointer-events: none;
+}
+
+#sentBox h2,
+.sent-box h2 {
+  font-size: 48px;
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  margin-bottom: 160px;
+  top: 90px;
+}
+
+#sentBox p,
+.sent-box p {
+  font-size: 18px;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  color: black;
+  margin-bottom: 0px;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  top: -30px;
+  opacity: 50%;
+}
+
+#sentBox a,
+.sent-box a {
+  color: black;
+  opacity: 70%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  margin-top: 40px;
+  margin-left: 155px;
+}
+
+#sentBox a:hover,
+.sent-box a:hover {
+  opacity: 50%;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  #sentBox,
+  .sent-box {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem 0;
+    right: auto;
+    left: auto;
+    top: auto;
+  }
+}
+
+/* RESET NOVO - fundo e animação igual ao forgot */
+.reset-container {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 40px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 1.5px;
+  width: 420px;
+  height: 480px;
+  max-width: 90vw;
+  margin: 0 auto;
+  position: relative;
+  top: 10%; /* Mais para cima */
+  right: 13%;
+  left: auto;
+  box-shadow:
+    inset -33.43px 33.43px 33.43px 0px rgba(255, 255, 255, 0.1),
+    inset 33.43px -33.43px 33.43px 0px rgba(165, 165, 165, 0.1),
+    -4px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10.03px);
+  display: block;
+  z-index: 200;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+  padding: 40px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 160%;
+}
+
+.reset-container.show {
+  opacity: 1;
+  transform: translateY(-100%);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+.reset-container.hide {
+  opacity: 0;
+  transform: translateY(10%);
+  pointer-events: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 1.5, 0.5, 1),
+    transform 0.6s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+
+.reset-title {
+  font-family: "Inria Sans Bold Local", Arial, sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 36px;
+  margin-top: 0;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.reset-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.reset-password-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.reset-password {
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #fff;
+  font-size: 1.15rem;
+  color: #413027;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+  outline: none;
+  font-family: "Inria Sans Regular Local", Arial, sans-serif;
+  margin-bottom: 0;
+  transition: box-shadow 0.2s;
+}
+
+.reset-password:focus {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.reset-toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  z-index: 2;
+}
+
+.reset-btn {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: block;
+  margin: 0px;
+  text-align: center;
+  width: 350px;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.reset-btn:hover,
+.reset-btn:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .reset-container {
+    width: 98vw;
+    min-width: 0;
+    padding: 24px 4vw;
+  }
+  .reset-title {
+    font-size: 2rem;
+  }
+}

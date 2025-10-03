@@ -1,0 +1,1138 @@
+/* Importação local da fonte Karantina Bold */
+@font-face {
+  font-family: "Karantina-Bold";
+  src: url("/static/fonts/Karantina-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+/* Importação local da fonte Nexa Heavy */
+@font-face {
+  font-family: "Nexa-Heavy";
+  src: url("/static/fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.app,
+.app * {
+  box-sizing: border-box;
+}
+.app {
+  background: #73a8ce;
+  height: 2299px;
+  position: relative;
+}
+.logo {
+  width: 150.64px;
+  height: 44px;
+  position: absolute;
+  left: 1626px;
+  top: 102px;
+  object-fit: cover;
+  aspect-ratio: 150.64/44;
+}
+.group-5 {
+  position: absolute;
+  inset: 0;
+}
+.frame-3 {
+  display: flex;
+  flex-direction: row;
+  gap: 38.5px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: 150px;
+  top: 89px;
+}
+.codicon-account {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  position: relative;
+
+  aspect-ratio: 1;
+}
+.ol-usu-rio {
+  color: #ffffff;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  position: absolute;
+  left: 237px;
+  top: 100px;
+}
+.ol-usu-rio-span {
+  font-family: "InriaSans-Regular", sans-serif;
+  color: #000000;
+}
+.ol-usu-rio-span2 {
+  font-family: "InriaSans-Bold", sans-serif;
+  font-weight: 700;
+  color: #000000;
+}
+.frame-5 {
+  background: rgba(67, 97, 119, 0.5);
+  padding: 10px 1451px 10px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 1920px;
+  position: absolute;
+  left: 0px;
+  top: 420px;
+}
+.funcoes {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Karantina-Bold", "Karantina", cursive, sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+.valvulas-container {
+  width: 1080px;
+  position: absolute;
+  left: 150px;
+  top: 655px;
+  height: auto;
+}
+.rectangle-32 {
+  background: #ffffff;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 70px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.valve-3 {
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  margin-left: 24px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  position: static;
+}
+.valvulas {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 85.78%;
+  font-weight: bold;
+  margin-left: 24px;
+  flex: 1;
+  position: static;
+}
+.vector {
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+  transition: transform 0.2s;
+  position: static;
+}
+.valvulas-exemplo {
+  display: none;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 32px 40px 24px 40px;
+  color: #222;
+  font-size: 1.1rem;
+  min-width: 300px;
+  box-shadow: 0 2px 8px #0001;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  max-height: 0;
+
+  transition: max-height 0.12s;
+  border-top: 1px solid #eee;
+}
+.valvulas-exemplo.show {
+  max-height: 600px;
+  display: block;
+}
+
+/* Estilo para a seção da estação meteorológica */
+.estacao-container {
+  width: 1080px;
+  position: absolute;
+  left: 150px;
+  top: 745px;
+  height: auto;
+}
+.estacao-icon {
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  margin-left: 24px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  position: static;
+}
+.estacao-label {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 85.78%;
+  font-weight: bold;
+  margin-left: 24px;
+  flex: 1;
+  position: static;
+}
+.estacao-exemplo {
+  display: none;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 32px 40px 24px 40px;
+  color: #222;
+  font-size: 1.1rem;
+  min-width: 300px;
+  box-shadow: 0 2px 8px #0001;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  max-height: 0;
+
+  transition: max-height 0.12s;
+  border-top: 1px solid #eee;
+}
+.estacao-exemplo.show {
+  max-height: 700px;
+  display: block;
+}
+
+.assets,
+.assets * {
+  box-sizing: border-box;
+}
+.assets {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 200px;
+  width: 100%;
+  padding-top: 60px;
+}
+
+.valvula-box {
+  background: rgba(193, 193, 194, 0.15);
+  border-radius: 20px;
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  min-height: 240px;
+  padding: 16px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 8px #0001;
+  justify-content: flex-start;
+}
+
+.valvula-label {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  word-break: break-word;
+}
+
+.mdi-valve {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 10px;
+  order: 3;
+  transition: transform 0.3s;
+  left: auto;
+  top: auto;
+  aspect-ratio: 1;
+  align-self: center;
+  opacity: 1;
+  position: static;
+}
+
+/* Transições de rotação para animação */
+.valve-rotate-in {
+  transform: scale(1) rotate(-15deg);
+  transition: transform 0.15s;
+}
+.valve-rotate-out {
+  transform: scale(1) rotate(0deg);
+  transition: transform 0.3s;
+}
+.valve-rotate-in-reverse {
+  transform: scale(1) rotate(15deg);
+  transition: transform 0.15s;
+}
+.valve-rotate-out-reverse {
+  transform: scale(1) rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.status {
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-size: 14px;
+  margin-bottom: 8px;
+  min-height: 18px;
+  order: 2;
+}
+
+.status.ativada {
+  color: #77dd77;
+}
+
+.status.desativada {
+  color: #e33629;
+}
+
+.toggle-btn {
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  min-width: 90px;
+  min-height: 32px;
+  margin-bottom: 0;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+  order: 4;
+}
+
+.toggle-btn.ativada {
+  background: #e33629;
+  color: #fff;
+}
+.toggle-btn.desativada {
+  background: #77dd77;
+  color: #fff;
+}
+.bg {
+  background: rgba(193, 193, 194, 0.35);
+  border-radius: 20px;
+  width: 149px;
+  height: 149px;
+  position: absolute;
+  left: 0px;
+  top: 103px;
+}
+.bg2 {
+  background: #77dd77;
+  border-radius: 10px;
+  width: 149px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 288px;
+}
+.bg3 {
+  background: #e33629;
+  border-radius: 10px;
+  width: 149px;
+  height: 40px;
+  position: absolute;
+  left: 227px;
+  top: 288px;
+}
+.bg4 {
+  background: rgba(193, 193, 194, 0.35);
+  border-radius: 20px;
+  width: 149px;
+  height: 149px;
+  position: absolute;
+  left: 227px;
+  top: 103px;
+}
+.rectangle-20 {
+  background: #000000;
+  width: 1.69%;
+  height: 35.06%;
+  position: absolute;
+  right: 44.53%;
+  left: 53.78%;
+  bottom: 28.35%;
+  top: 36.59%;
+}
+.rectangle-21 {
+  background: #000000;
+  width: 1.69%;
+  height: 35.06%;
+  position: absolute;
+  right: 61.02%;
+  left: 37.29%;
+  bottom: 28.35%;
+  top: 36.59%;
+}
+.rectangle-18 {
+  background: #000000;
+  width: 1.69%;
+  height: 10.98%;
+  position: absolute;
+  right: 52.7%;
+  left: 45.61%;
+  bottom: 48.17%;
+  top: 40.85%;
+}
+.rectangle-19 {
+  background: #000000;
+  width: 1.69%;
+  height: 10.98%;
+  position: absolute;
+  right: 52.7%;
+  left: 45.61%;
+  bottom: 33.23%;
+  top: 55.79%;
+}
+.ellipse-1 {
+  background: #000000;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  left: 284px;
+  top: 159px;
+}
+.v-lvula-1 {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 30px;
+  top: 80px;
+}
+.v-lvula-2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 257px;
+  top: 79px;
+}
+.valvula-ativada {
+  color: #77dd77;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 16px;
+  top: 259px;
+  width: 79px;
+  height: 16px;
+}
+.valvula-desativada {
+  color: #e33629;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 16px;
+  top: 259px;
+  width: 79px;
+  height: 16px;
+}
+.ativar {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 42px;
+  top: 299px;
+  width: 65px;
+  height: 17px;
+}
+.desativar {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  line-height: 85.78%;
+  font-weight: 400;
+  position: absolute;
+  left: 253px;
+  top: 298px;
+  width: 97px;
+  height: 17px;
+}
+
+.frame-4 {
+  background: rgba(102, 102, 102, 0);
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: end;
+  justify-content: end;
+  width: 100%;
+  height: 38px;
+  position: relative;
+  margin-top: -65px;
+}
+
+#adicionarValvulaBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 48px;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.adicionar-valvula {
+  color: #000000;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #77dd77;
+  border-radius: 8px;
+  padding: 10px 32px;
+  width: 190px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  box-sizing: border-box;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.adicionar-valvula:hover {
+  background: #5fc05f;
+  color: #fff;
+}
+
+/* Modal de editar válvula (igual add/excluir) */
+#editValvulaModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(67, 97, 119, 0.25);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#editValvulaModal .custom-modal-bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  position: static;
+}
+#editValvulaModal .custom-modal-content {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px #0003;
+  min-width: 320px;
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#editValvulaModal .custom-modal-title {
+  font-family: "Karantina-Bold", cursive, sans-serif;
+  font-size: 32px;
+  color: #436177;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+#editValvulaModal .custom-modal-actions {
+  display: flex;
+  gap: 24px;
+}
+#editValvulaModal .custom-modal-btn {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+#editValvulaModal .custom-modal-btn-yes {
+  background: #77dd77;
+  color: #fff;
+}
+#editValvulaModal .custom-modal-btn-no {
+  background: #e33629;
+  color: #fff;
+}
+
+/* Modal customizada */
+#confirmModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(67, 97, 119, 0.25);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#confirmModal .custom-modal-bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  position: static;
+}
+#confirmModal .custom-modal-content {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px #0003;
+  min-width: 320px;
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#confirmModal .custom-modal-title {
+  font-family: "Karantina-Bold", cursive, sans-serif;
+  font-size: 32px;
+  color: #436177;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+#confirmModal .custom-modal-msg {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 24px;
+  text-align: center;
+}
+#confirmModal .custom-modal-actions {
+  display: flex;
+  gap: 24px;
+}
+#confirmModal .custom-modal-btn {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+#confirmModal .custom-modal-btn-yes {
+  background: #77dd77;
+  color: #fff;
+}
+#confirmModal .custom-modal-btn-no {
+  background: #e33629;
+  color: #fff;
+}
+
+/* Modal de adicionar válvula (usa mesmo estilo da modal de confirmação) */
+#addValvulaModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(67, 97, 119, 0.25);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#addValvulaModal .custom-modal-bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  position: static;
+}
+#addValvulaModal .custom-modal-content {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px #0003;
+  min-width: 320px;
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#addValvulaModal .custom-modal-title {
+  font-family: "Karantina-Bold", cursive, sans-serif;
+  font-size: 32px;
+  color: #436177;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+#addValvulaModal .custom-modal-actions {
+  display: flex;
+  gap: 24px;
+}
+#addValvulaModal .custom-modal-btn {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+#addValvulaModal .custom-modal-btn-yes {
+  background: #77dd77;
+  color: #fff;
+}
+#addValvulaModal .custom-modal-btn-no {
+  background: #e33629;
+  color: #fff;
+}
+
+/* Funções (editar/excluir) alinhadas nas extremidades */
+.valvula-actions-menu {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: -5px; /* alterado de 8px para 0 para subir mais */
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.valvula-actions-menu .edit,
+.valvula-actions-menu .delete {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Remove left/right for better alignment */
+}
+
+.valvula-actions-menu .edit .rectangle-36,
+.valvula-actions-menu .delete .rectangle-37 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle-36,
+.rectangle-37 {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.rectangle-36 {
+  background: #e0e7ef;
+}
+
+.rectangle-37 {
+  background: #ffeaea;
+}
+
+.valvula-actions-menu .edit img,
+.valvula-actions-menu .delete img {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.valvula-edit-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.valvula-edit-label input.valvula-edit-input {
+  font-size: 22px;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  color: #222;
+}
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 0 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  border-radius: 6px;
+  height: 28px;
+}
+.icon-btn img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.valvulas-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.valvula-edit-input {
+  font-size: 20px;
+  font-family: "Nexa-Heavy", sans-serif;
+  font-weight: 700;
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+}
+
+/* Estilo para a seção da estação meteorológica */
+.estacao-container {
+  width: 1080px;
+  position: absolute;
+  left: 150px;
+  top: 745px;
+  height: auto;
+}
+.estacao-icon {
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  margin-left: 24px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  position: static;
+}
+.estacao-label {
+  color: #000000;
+  text-align: left;
+  font-family: "Nexa-Heavy", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 85.78%;
+  font-weight: bold;
+  margin-left: 24px;
+  flex: 1;
+  position: static;
+}
+.estacao-exemplo {
+  display: none;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 32px 40px 24px 40px;
+  color: #222;
+  font-size: 1.1rem;
+  min-width: 300px;
+  box-shadow: 0 2px 8px #0001;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  max-height: 0;
+
+  transition: max-height 0.12s;
+  border-top: 1px solid #eee;
+}
+.estacao-exemplo.show {
+  max-height: 700px;
+  display: block;
+}
+
+/* Weather main info */
+.weather-main {
+  background: #ededed;
+  border-radius: 18px;
+  padding: 24px 32px 18px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 340px;
+  max-width: 420px;
+  box-shadow: 0 2px 8px #0001;
+}
+.weather-main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.weather-main-title {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0;
+}
+.weather-main-temp-row {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.weather-main-temp {
+  font-family: "Nexa-Heavy", cursive, sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #222;
+  line-height: 1;
+}
+.weather-main-unit {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 38px;
+  color: #222;
+  margin-left: 4px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.weather-main-minmax-row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.weather-main-min,
+.weather-main-max {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  color: #222;
+  font-weight: 700;
+}
+.weather-main-extra-row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  margin-top: 8px;
+}
+.weather-main-extra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+.weather-main-extra-label {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 16px;
+  color: #222;
+  font-weight: 700;
+}
+.weather-main-extra-value {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 18px;
+  color: #222;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* Weather tabs */
+.weather-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+.weather-tab {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 16px;
+  color: #222;
+  background: #f5f7fa;
+  border-radius: 12px;
+  padding: 6px 18px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  outline: none;
+  font-weight: 700;
+}
+.weather-tab.active {
+  background: #2d5d89;
+  color: #fff;
+}
+
+/* Weather cards */
+.weather-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-bottom: 16px;
+  min-height: 120px;
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  padding-bottom: 8px;
+  /* Opcional: barra de rolagem mais discreta */
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 #ededed;
+}
+.weather-cards::-webkit-scrollbar {
+  height: 8px;
+}
+.weather-cards::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 8px;
+}
+.weather-cards::-webkit-scrollbar-track {
+  background: #ededed;
+  border-radius: 8px;
+}
+.weather-card {
+  background: #f5f7fa;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 18px 22px;
+  min-width: 120px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.weather-card-title {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.weather-card-temp {
+  font-family: "Nexa-Heavy", cursive, sans-serif;
+  font-size: 18.8px;
+  color: #222;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.weather-card-desc {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 14px;
+  color: #888;
+}
+.weather-card-minmax {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 13px;
+  color: #222;
+  margin-top: 2px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Weather extra info (Umidade, Vento, Chuva) */
+.weather-extra {
+  margin-top: 8px;
+  min-height: 40px;
+}
+.weather-extra-content {
+  display: none;
+}
+.weather-extra-content.active {
+  display: block;
+}
+.weather-extra-value {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 20px;
+  color: #436177;
+  background: #e0e7ef;
+  border-radius: 10px;
+  padding: 12px 32px;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+/* Estilo para o dropdown de período */
+.weather-period-select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  margin-top: 0;
+  gap: 8px;
+}
+.weather-period-select select {
+  font-family: "Nexa-Heavy", sans-serif;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 6px 18px;
+  border: 1px solid #bbb;
+  background: #e0e7ef;
+  color: #436177;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+.weather-period-select select:focus {
+  border: 1.5px solid #436177;
+}
