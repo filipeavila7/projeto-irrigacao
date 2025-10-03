@@ -21,8 +21,7 @@ Usuario.verificar_senha
 chave = os.getenv('SECRET_KEY')
 token_usados = {}
 # mudar para status do motor
-led_status = {'status': False}
-led_umidade =  {"umidade": None}
+
 API_KEY = os.getenv('API_KEY')
 
 # Função para gerar o token JWT
@@ -761,34 +760,44 @@ def acionar_valvula(id_valvula):
     
 
 
-@app.route("/led/on", methods=['POST'])
-def led_on():
-    led_status['status'] = True
-    return render_template('index')
 
 
-@app.route("/led/off", methods=['POST'])
-def led_off():
-    led_status['status'] = False
-    return render_template('index')
+# Variáveis globais
+led_status = {"status": False}
+ultima_umidade = 0
 
+# Rotas LED
+@app.route("/led/on", methods=["POST"])
+def ligar_led():
+    led_status["status"] = True
+    return redirect(url_for("index"))
 
-@app.route("/led/status", methods=['GET'])
-def led_status():
+@app.route("/led/off", methods=["POST"])
+def desligar_led():
+    led_status["status"] = False
+    return redirect(url_for("index"))
+
+@app.route("/led/status", methods=["GET"])
+def status_led():
     return jsonify(led_status)
 
-@app.route('/led/umidade', methods=['POST', 'GET'])
-def led_umidade():
+# Rota umidade
+@app.route("/umidade", methods=["GET"])
+def receber_umidade():
     global ultima_umidade
+    valor = request.args.get("valor")
+    if valor:
+        try:
+            ultima_umidade = int(valor)
+            print(f"🌱 Umidade recebida: {ultima_umidade}%")
+            return f"Umidade {ultima_umidade}% recebida com sucesso!"
+        except ValueError:
+            return "Valor inválido", 400
+    return "Nenhum valor enviado", 400
 
-    if request.method == 'POST':
-        data = request.get_json()
-        if not data or "umidade" not in data:
-            return jsonify({"status": "erro", "message": "JSON inválido!"}), 400
-
-        ultima_umidade["umidade"] = data["umidade"]
-        print(f"🌱 Nova leitura recebida: {data['umidade']}%")
-        return jsonify({"status": "sucesso", "message": "Leitura recebida com sucesso."}), 200
-
-    elif request.method == 'GET':
-        return jsonify(ultima_umidade), 200
+@app.route("/status_geral", methods=["GET"])
+def status_geral():
+    return jsonify({
+        "led": led_status["status"],
+        "umidade": ultima_umidade
+    })
