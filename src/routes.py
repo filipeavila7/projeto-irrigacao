@@ -12,11 +12,17 @@ from dotenv import load_dotenv
 from flask_mail import Message
 import os
 import jwt
+from src.services.usuario_services import alterar_senha
+
+
 
 Usuario.verificar_senha
 
 chave = os.getenv('SECRET_KEY')
 token_usados = {}
+# mudar para status do motor
+led_status = {'status': False}
+led_umidade =  {"umidade": None}
 API_KEY = os.getenv('API_KEY')
 
 # Função para gerar o token JWT
@@ -208,62 +214,28 @@ def rota_cadastro_usuario():
     return render_template('cadastro_usuario.html')
 
 
-@app.route('/esqueci_a_senha', methods=['GET', 'POST'])
-def esqueci_a_senha_route():
-    if request.method == 'GET':
-        return render_template('esqueci_a_senha.html')
-
-    data = request.get_json()
-    email = data.get('email')
-
-    usuario_encontrado = Usuario.query.filter_by(email=email).first()
-
-    if usuario_encontrado:
-        try:
-            token = gerar_token_jwt(email)
-            reset_url = url_for('resetar_senha_route', token=token, _external=True)
-
-            msg = Message(
-                subject='Redefinição de Senha',
-                sender='aquanox.contato@gmail.com',
-                recipients=[email],
-                body=f'Olá, {usuario_encontrado.name}!\n\nClique no link abaixo para redefinir sua senha:\n{reset_url}\n\nSe você não solicitou esta ação, ignore este e-mail.'
-            )
-            mail.send(msg)
-
-            return jsonify({"status": "sucesso", "message": "E-mail enviado com sucesso. Verifique sua caixa de entrada."})
-        except Exception as e:
-            return jsonify({"status": "erro", "message": f"Erro ao enviar e-mail: {str(e)}"})
-
-    return jsonify({"status": "erro", "message": "Usuário não encontrado."})
-
-'''@app.route('/painelAdmin/alterar_senha', methods=['POST'])
+@app.route('/alterar_senha', methods=['POST'])
 @login_required
 def alterar_senha_route():
-    usuario = Usuario.query.get(current_user.id)
+    data = request.get_json()
 
-    dados = request.get_json()
+    email = data.get('email')
+    senha_atual = data.get('senha_atual')
+    nova_senha = data.get('nova_senha')
+    confirmar_senha = data.get('confirmar_senha')
 
+    if not email or not senha_atual or not nova_senha or not confirmar_senha:
+        return jsonify({"message": "Todos os campos são obrigatórios!"}), 400
+
+    usuario = Usuario.query.filter_by(email=email).first()
     if not usuario:
         return jsonify({"message": "Usuário não encontrado!"}), 404
 
-    senha = dados.get('senha')
-    nova_senha = dados.get('nova_senha')
-    confirmar_senha = dados.get('confirmar_senha')
+    # Chama a service que você criou
+    return alterar_senha(usuario, senha_atual, nova_senha, confirmar_senha)
 
-    if not all([senha, nova_senha, confirmar_senha]):
-        return jsonify({"message": "Todos os campos são obrigatórios!"}), 400
 
-    try:        
-        alterar_senha(usuario, senha, nova_senha, confirmar_senha)
-        return jsonify({"message": "Senha Alterada com sucesso!"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 400
-
-    except Exception as e:
-        app.logger.error(f"Erro ao alterar senha: {str(e)}")
-    return jsonify({"message": "Erro interno ao processar a solicitação."}), 500'''
 
 
 # ============================================================
@@ -786,3 +758,37 @@ def acionar_valvula(id_valvula):
             'sucesso': False,
             'mensagem': f'Erro ao atualizar válvula: {str(e)}'
         }), 500
+    
+
+
+@app.route("/led/on", methods=['POST'])
+def led_on():
+    led_status['status'] = True
+    return render_template('index')
+
+
+@app.route("/led/off", methods=['POST'])
+def led_off():
+    led_status['status'] = False
+    return render_template('index')
+
+
+@app.route("/led/status", methods=['GET'])
+def led_status():
+    return jsonify(led_status)
+
+@app.route('/led/umidade', methods=['POST', 'GET'])
+def led_umidade():
+    global ultima_umidade
+
+    if request.method == 'POST':
+        data = request.get_json()
+        if not data or "umidade" not in data:
+            return jsonify({"status": "erro", "message": "JSON inválido!"}), 400
+
+        ultima_umidade["umidade"] = data["umidade"]
+        print(f"🌱 Nova leitura recebida: {data['umidade']}%")
+        return jsonify({"status": "sucesso", "message": "Leitura recebida com sucesso."}), 200
+
+    elif request.method == 'GET':
+        return jsonify(ultima_umidade), 200
