@@ -24,37 +24,7 @@ token_usados = {}
 
 API_KEY = os.getenv('API_KEY')
 
-# Função para gerar o token JWT
-def gerar_token_jwt(email):
     
-    exp = datetime.utcnow() + timedelta(minutes=2)  # Expira em 1 hora
-    payload = {
-        "email": email,
-        "exp": exp,
-        "used": False
-    }
-    token = jwt.encode(payload, chave, algorithm="HS256")
-    return token
-
-def verificar_token(token):
-    try:
-        # Decodifica o token JWT sem modificar o payload
-        payload = jwt.decode(token, chave, algorithms=['HS256'])
-
-        # Verifica se o token já foi usado (verificando se existe no dicionário)
-        if token in token_usados:
-            return False  # Token já foi utilizado
-
-        # Se o token não foi usado, armazena o token como utilizado
-        token_usados[token] = payload  # Armazena o token como utilizado
-
-        return True  # Token válido e ainda não utilizado
-
-    except jwt.ExpiredSignatureError:
-        return False  # Token expirado
-    except jwt.InvalidTokenError:
-        return False  # Token inválido
-
 # ------------ ROTA DA API DO TEMPO --------------------
 
 load_dotenv()
